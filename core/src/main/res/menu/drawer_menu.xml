@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <group
+        android:id="@+id/examples"
+        android:checkableBehavior="single" >
+    </group>
+
+    <group
+        android:id="@+id/social"
+        android:checkableBehavior="single" >
+
+        <item
+            android:id="@+id/star_on_github"
+            android:title="@string/star_on_github"
+            android:icon="@drawable/ic_github_24dp" />
+
+        <item
+            android:id="@+id/rate_on_playstore"
+            android:title="@string/rate_on_playstore"
+            android:icon="@drawable/ic_playstore_24dp" />
+    </group>
+</menu>
