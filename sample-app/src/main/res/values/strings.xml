@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">library-sample-app-template</string>
+    <string name="example_activity_1">Example Activity 1</string>
+    <string name="example_activity_2">Example Activity 2</string>
 </resources>

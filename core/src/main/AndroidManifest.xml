@@ -1,2 +1,6 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.psoffritti.librarysampleapptemplate.core"/>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.psoffritti.librarysampleapptemplate.core">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+</manifest>

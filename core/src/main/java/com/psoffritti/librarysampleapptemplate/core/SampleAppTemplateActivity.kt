@@ -8,10 +8,7 @@ import android.graphics.Point
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.view.WindowManager
+import android.view.*
 import android.webkit.WebView
 import android.webkit.WebViewClient
 
@@ -23,7 +20,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import java.lang.RuntimeException
 
 class SampleAppTemplateActivity : AppCompatActivity() {
 
@@ -32,7 +28,7 @@ class SampleAppTemplateActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private var selectedMenuItem: MenuItem? = null
 
-    private val toolbarHeight = toolbar.layoutParams.height
+    private var toolbarHeight = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +40,7 @@ class SampleAppTemplateActivity : AppCompatActivity() {
         initToolbar()
         initNavDrawer()
 
-        showFeatureDiscovery()
+        showTutorial()
     }
 
     public override fun onResume() {
@@ -119,6 +115,8 @@ class SampleAppTemplateActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
+        toolbarHeight = toolbar.layoutParams.height
+
         val actionbar = supportActionBar
         actionbar?.setDisplayHomeAsUpEnabled(true)
         actionbar?.setHomeAsUpIndicator(R.drawable.ic_nav_drawer_menu_24dp)
@@ -130,6 +128,12 @@ class SampleAppTemplateActivity : AppCompatActivity() {
 
         setNavigationViewWidth(navigationView)
 
+        val menu = navigationView.menu
+        val items: Array<ExampleActivityDetails> = intent.extras["examples"] as Array<ExampleActivityDetails>
+        items.forEachIndexed { index, element ->
+            menu.add(R.id.nav_drawer_examples_group, index, 0, element.nameResource).setIcon(element.iconResource)
+        }
+
         navigationView.setNavigationItemSelectedListener { menuItem ->
             menuItem.isChecked = true
             selectedMenuItem = menuItem
@@ -137,7 +141,7 @@ class SampleAppTemplateActivity : AppCompatActivity() {
             drawerLayout.closeDrawers()
 
             val intent = when {
-    //          menuItem.getItemId() == R.id.open_base_example_menu_item -> Intent(this, BasicExampleActivity::class.java)
+                menuItem.itemId >= 0 && menuItem.itemId < items.size -> Intent(this, items[menuItem.itemId].clazz)
                 menuItem.itemId == R.id.star_on_github -> Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/PierfrancescoSoffritti/android-youtube-player/stargazers"))
                 menuItem.itemId == R.id.rate_on_playstore -> {
                     val appPackageName = packageName
@@ -147,7 +151,7 @@ class SampleAppTemplateActivity : AppCompatActivity() {
                         Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName"))
                     }
                 }
-                else -> throw RuntimeException()
+                else -> return@setNavigationItemSelectedListener false
             }
 
             startActivity(intent)
@@ -172,7 +176,7 @@ class SampleAppTemplateActivity : AppCompatActivity() {
     }
 
 
-    private fun showFeatureDiscovery() {
+    private fun showTutorial() {
         val preferenceKey = "featureDiscoveryShown"
         val sharedPreferencesKey = "sampleApp_MainActivity_SharedPreferences"
         val prefs = getSharedPreferences(sharedPreferencesKey, Context.MODE_PRIVATE)
