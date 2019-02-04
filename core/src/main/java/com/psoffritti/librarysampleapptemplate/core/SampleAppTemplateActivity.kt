@@ -26,7 +26,6 @@ class SampleAppTemplateActivity : AppCompatActivity() {
     private lateinit var toolbar: Toolbar
     private lateinit var webview: WebView
     private lateinit var drawerLayout: DrawerLayout
-    private var selectedMenuItem: MenuItem? = null
 
     private var toolbarHeight = 0
 
@@ -34,18 +33,25 @@ class SampleAppTemplateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sample_app_template)
 
-        initWebView()
+        val homePageUrl: String? = getHomePageUrl()
+        val navDrawerMenuItems: List<ExampleActivityDetails>? = getNavDrawerItemsFromIntent()
+
+        initWebView(homePageUrl)
 
         adjustStatusBarTranslucency()
         initToolbar()
-        initNavDrawer()
+        initNavDrawer(navDrawerMenuItems)
 
         showTutorial()
     }
 
-    public override fun onResume() {
-        super.onResume()
-        selectedMenuItem?.isChecked = false
+    private fun getHomePageUrl(): String? {
+        return intent?.extras?.getString(Constants.HONEPAGE_URL.name)
+    }
+
+    private fun getNavDrawerItemsFromIntent(): List<ExampleActivityDetails>? {
+        val items = intent?.extras?.getParcelableArray(Constants.EXAMPLES.name)
+        return items?.filterIsInstance<ExampleActivityDetails>()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -81,19 +87,20 @@ class SampleAppTemplateActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetJavaScriptEnabled")
-    private fun initWebView() {
+    private fun initWebView(homePageUrl: String?) {
         webview = findViewById(R.id.main_activity_webview)
         webview.settings.javaScriptEnabled = true
-        webview.loadUrl("https://pierfrancescosoffritti.github.io/android-youtube-player/")
+        webview.loadUrl(homePageUrl)
 
         webview.webViewClient = object : WebViewClient() {
+
             override fun onPageCommitVisible(view: WebView, url: String) {
                 super.onPageCommitVisible(view, url)
                 findViewById<View>(R.id.progressbar).visibility = View.GONE
             }
 
-            override fun shouldOverrideUrlLoading(view: WebView, url: String?): Boolean {
-                return if (url != null && (url.startsWith("http://") || url.startsWith("https://"))) {
+            override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+                return if (url.startsWith("http://") || url.startsWith("https://")) {
                     startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
                     true
                 } else
@@ -122,26 +129,22 @@ class SampleAppTemplateActivity : AppCompatActivity() {
         actionbar?.setHomeAsUpIndicator(R.drawable.ic_nav_drawer_menu_24dp)
     }
 
-    private fun initNavDrawer() {
+    private fun initNavDrawer(navDrawerMenuItems: List<ExampleActivityDetails>?) {
         drawerLayout = findViewById(R.id.drawer_layout)
         val navigationView: NavigationView = findViewById(R.id.navigation_view)
 
         setNavigationViewWidth(navigationView)
 
         val menu = navigationView.menu
-        val items: Array<ExampleActivityDetails> = intent.extras["examples"] as Array<ExampleActivityDetails>
-        items.forEachIndexed { index, element ->
+        navDrawerMenuItems?.forEachIndexed { index, element ->
             menu.add(R.id.nav_drawer_examples_group, index, 0, element.nameResource).setIcon(element.iconResource)
         }
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
-            menuItem.isChecked = true
-            selectedMenuItem = menuItem
-
             drawerLayout.closeDrawers()
 
             val intent = when {
-                menuItem.itemId >= 0 && menuItem.itemId < items.size -> Intent(this, items[menuItem.itemId].clazz)
+                navDrawerMenuItems != null && menuItem.itemId >= 0 && menuItem.itemId < navDrawerMenuItems.size -> Intent(this, navDrawerMenuItems[menuItem.itemId].clazz)
                 menuItem.itemId == R.id.star_on_github -> Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/PierfrancescoSoffritti/android-youtube-player/stargazers"))
                 menuItem.itemId == R.id.rate_on_playstore -> {
                     val appPackageName = packageName

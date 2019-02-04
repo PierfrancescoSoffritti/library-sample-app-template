@@ -3,6 +3,7 @@ package com.psoffritti.librarysampleapptemplate
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.psoffritti.librarysampleapptemplate.core.Constants
 import com.psoffritti.librarysampleapptemplate.core.ExampleActivityDetails
 import com.psoffritti.librarysampleapptemplate.core.SampleAppTemplateActivity
 
@@ -13,10 +14,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val intent = Intent(this, SampleAppTemplateActivity::class.java)
 
-        intent.putExtra("title", "title")
-        intent.putExtra("homepage-url", "title")
-        intent.putExtra("github-url", "title")
-        intent.putExtra("playstore-url", "title")
+        intent.putExtra(Constants.TITLE.name, "title")
+        intent.putExtra(Constants.HONEPAGE_URL.name, "https://github.com/PierfrancescoSoffritti/sliding-drawer/blob/master/README.md")
+        intent.putExtra(Constants.GITHUB_URL.name, "title")
+        intent.putExtra(Constants.PLAYSTORE_URL.name, "title")
 
         val examples = arrayOf(
             ExampleActivityDetails(
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        intent.putExtra("examples", examples)
+        intent.putExtra(Constants.EXAMPLES.name, examples)
 
         startActivity(intent)
         finish()
