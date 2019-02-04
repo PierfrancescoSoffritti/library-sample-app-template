@@ -5,4 +5,5 @@
     <string name="open_on_github">Open on GitHub</string>
     <string name="tutorial_title">Explore examples</string>
     <string name="tutorial_description">Click here to see all the examples</string>
+    <string name="no_home_page">This library doesn\'t have a homepage.</string>
 </resources>

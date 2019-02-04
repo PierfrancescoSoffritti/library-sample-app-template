@@ -26,7 +26,7 @@ class State private constructor(val title: String?, val homepageUrl: String?, va
         }
 
         private fun getExamplesActivityDetails(bundle: Bundle): List<ExampleActivityDetails>? {
-            val items = bundle.get(Constants.EXAMPLES.name) as Array<*>?
+            val items: Array<*>? = bundle.get(Constants.EXAMPLES.name) as Array<*>?
             return items?.filterIsInstance<ExampleActivityDetails>()
         }
     }

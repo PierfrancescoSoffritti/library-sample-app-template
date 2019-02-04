@@ -14,20 +14,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val intent = Intent(this, SampleAppTemplateActivity::class.java)
 
-        intent.putExtra(Constants.TITLE.name, getString(R.string.app_name))
+        intent.putExtra(Constants.TITLE.name, getString(R.string.title))
         intent.putExtra(Constants.HONEPAGE_URL.name, "https://github.com/PierfrancescoSoffritti/library-sample-app-template/blob/master/README.md")
-        intent.putExtra(Constants.GITHUB_URL.name, "https://github.com/PierfrancescoSoffritti/library-sample-app-template")
+//        intent.putExtra(Constants.GITHUB_URL.name, "https://github.com/PierfrancescoSoffritti/library-sample-app-template")
         intent.putExtra(Constants.PLAYSTORE_PACKAGE_NAME.name, "title")
 
         val examples = arrayOf(
             ExampleActivityDetails(
                 R.string.example_activity_1,
-                R.drawable.ic_github_24dp,
+                R.drawable.ic_android_24dp,
                 Example1Activity::class.java
             ),
             ExampleActivityDetails(
                 R.string.example_activity_2,
-                R.drawable.ic_github_24dp,
+                R.drawable.ic_insert_emoticon_24dp,
                 Example1Activity::class.java
             )
         )
