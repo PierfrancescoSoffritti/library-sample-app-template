@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra(Constants.TITLE.name, getString(R.string.title))
         intent.putExtra(Constants.HOMEPAGE_URL.name, "https://github.com/PierfrancescoSoffritti/library-sample-app-template/blob/master/README.md")
         intent.putExtra(Constants.GITHUB_URL.name, "https://github.com/PierfrancescoSoffritti/library-sample-app-template")
-        intent.putExtra(Constants.PLAYSTORE_PACKAGE_NAME.name, "title")
+        intent.putExtra(Constants.PLAYSTORE_PACKAGE_NAME.name, "com.psoffritti.librarysampleapptemplate.sampleapp")
 
         val examples = arrayOf(
             ExampleActivityDetails(

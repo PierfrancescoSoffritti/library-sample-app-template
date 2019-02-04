@@ -12,11 +12,14 @@ An Android library to bootstrap sample apps for other Android projects. This lib
 ![showcase](./images/merged.jpg)
 
 # Sample app
-You can download the apk for the sample app of this library [at this link](./sample-app/apk), or [on the PlayStore]().
+You can download the apk for the sample app of this library [at this link](./sample-app/apk), or [on the PlayStore](https://play.google.com/store/apps/details?id=com.psoffritti.librarysampleapptemplate.sampleapp).
 
 The code of the sample app is available [at this link](./sample-app/).
 
---add playstore badge--
+<a href='https://play.google.com/store/apps/details?id=com.psoffritti.librarysampleapptemplate.sampleapp&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+    <img width='200px' alt='Get it on Google Play'
+         src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/>
+</a>
 
 Having the sample apps installed is a good way to be notified of new releases. Although watching this repository will allow GitHub to email you whenever a new release is published.
 
