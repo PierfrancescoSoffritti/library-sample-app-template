@@ -42,6 +42,38 @@ To use the library you need to launch the library's Activity (`SampleAppTemplate
 
 These optional Views are configured by putting extras into the Intent that launches the Activity.
 
+To use `SampleAppTemplateActivity`, first add it to your manifest.
+```xml
+<activity android:name="com.psoffritti.librarysampleapptemplate.core.SampleAppTemplateActivity" />
+```
+Make sure that the theme of the `<application>` element in your manifes extends a theme with no action bar.
+```xml
+<style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+  <item name="colorPrimary">@color/colorPrimary</item>
+  <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+  <item name="colorAccent">@color/colorAccent</item>
+</style>
+```
+Every Activity can use the theme you prefer, with or without actionbar. Only the main theme needs to descend from a `NoActionBar` theme.
+
+This is how your manifes should look like.
+```xml
+<application
+  android:theme="@style/AppTheme">
+  <activity android:name=".MainActivity">
+      <intent-filter>
+          <action android:name="android.intent.action.MAIN" />
+          <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+  </activity>
+  <activity android:name=".ExampleActivity1" />
+  <activity android:name=".ExampleActivity2" android:theme="@style/Base.Theme.MaterialComponents.Light.DarkActionBar"/>
+  
+  <activity android:name="com.psoffritti.librarysampleapptemplate.core.SampleAppTemplateActivity" />
+</application>
+```
+Then, to start `SampleAppTemplateActivity` create the Intent in your main Activity.
+
 ```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
   super.onCreate(savedInstanceState)
@@ -71,7 +103,7 @@ When you run this code, the sample app's main Activity will create this Intent, 
 The Intent extras are used to configure the sample app to fit your project. You can [read here what each extra does](#intent-extras).
 
 # Intent extras
-Set these extras to the Intent that launches `SampleAppTemplateActivity` to customize the Activity.
+Set these extras to the Intent that launches `SampleAppTemplateActivity` to customize the Activity. Every value is optional.
 
 ### Constants.TITLE
 A `String` containing the title of your app.
@@ -147,3 +179,13 @@ intent.putExtra(Constants.EXAMPLES.name, examples)
 **If set**, a list of links to launch each Activity will be shown in the NavigationDrawer.
 
 **If not set**, the links won't be shown in the NavigationDrawer. It doesn't make much sense to not set this extra, your sample app will be just a webpage for your project.
+
+# Appearance
+`SampleAppTemplateActivity` will inherit colors and styles from your application. Change them in the same way you would for you application, by using `colorPrimary`, `colorPrimaryDark` and `accentColor`.
+
+If you want to customize the color of the [tutorial widget](./images/tutorial.jpg), define this colors in your app.
+```xml
+<color name="tutorial_background_color">#somecolor</color>
+<color name="tutorial_target_circle_color">#somecolor</color>
+<color name="tutorial_text_color">#somecolor</color>
+```
