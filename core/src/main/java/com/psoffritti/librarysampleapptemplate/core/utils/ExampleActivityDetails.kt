@@ -1,4 +1,4 @@
-package com.psoffritti.librarysampleapptemplate.core
+package com.psoffritti.librarysampleapptemplate.core.utils
 
 import java.io.Serializable
 

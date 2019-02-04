@@ -10,12 +10,14 @@
         android:checkableBehavior="single" >
 
         <item
+            android:checkable="false"
             android:orderInCategory="1"
             android:id="@+id/star_on_github"
             android:title="@string/star_on_github"
             android:icon="@drawable/ic_github_24dp" />
 
         <item
+            android:checkable="false"
             android:orderInCategory="1"
             android:id="@+id/rate_on_playstore"
             android:title="@string/rate_on_playstore"

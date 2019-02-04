@@ -1,4 +1,4 @@
-package com.psoffritti.librarysampleapptemplate.core
+package com.psoffritti.librarysampleapptemplate.core.customViews
 
 import android.content.Context
 import android.os.Build
@@ -12,20 +12,17 @@ import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import java.lang.RuntimeException
 
-class ProgressBarWebView: RelativeLayout {
-    private val webView: WebView
-    private val progressbar: View
-    var onUrlClick: (String) -> Unit = { throw RuntimeException() }
-
+class ProgressBarWebView(context: Context, attrs: AttributeSet?, defStyleAttr: Int): RelativeLayout(context, attrs, defStyleAttr) {
     constructor(context: Context) : this(context, null)
-
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
 
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-        webView = WebView(context)
-        progressbar = ProgressBar(context, null, android.R.attr.progressBarStyle)
+    private val webView = WebView(context)
+    private val progressbar = ProgressBar(context, attrs, android.R.attr.progressBarStyle)
 
-        val layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
+    var onUrlClick: (String) -> Unit = { throw RuntimeException() }
+
+    init {
+        val layoutParams: RelativeLayout.LayoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE)
 
         addView(webView, RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))

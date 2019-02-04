@@ -1,12 +1,14 @@
 package com.psoffritti.librarysampleapptemplate.core
 
 import android.os.Bundle
+import com.psoffritti.librarysampleapptemplate.core.utils.Constants
+import com.psoffritti.librarysampleapptemplate.core.utils.ExampleActivityDetails
 
-class State private constructor(val title: String?, val homepageUrl: String?, val githubUrl: String?, val playStorePackageName: String?, val examples: List<ExampleActivityDetails>?) {
+class Configuration private constructor(val title: String?, val homepageUrl: String?, val githubUrl: String?, val playStorePackageName: String?, val examples: List<ExampleActivityDetails>?) {
 
     companion object {
-        fun getInstance(bundle: Bundle): State {
-            return State(getAppTitle(bundle), getHomePageUrl(bundle), getGitHubUrl(bundle), getPlayStorePackageName(bundle), getExamplesActivityDetails(bundle))
+        fun getInstance(bundle: Bundle): Configuration {
+            return Configuration(getAppTitle(bundle), getHomePageUrl(bundle), getGitHubUrl(bundle), getPlayStorePackageName(bundle), getExamplesActivityDetails(bundle))
         }
 
         private fun getPlayStorePackageName(bundle: Bundle): String? {
@@ -22,7 +24,7 @@ class State private constructor(val title: String?, val homepageUrl: String?, va
         }
 
         private fun getHomePageUrl(bundle: Bundle): String? {
-            return bundle.getString(Constants.HONEPAGE_URL.name)
+            return bundle.getString(Constants.HOMEPAGE_URL.name)
         }
 
         private fun getExamplesActivityDetails(bundle: Bundle): List<ExampleActivityDetails>? {
