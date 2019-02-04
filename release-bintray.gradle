@@ -1,0 +1,34 @@
+/**
+ * Bintray release configuration
+ * */
+
+ext {
+  bintrayRepo = 'maven'
+  bintrayName = 'library-sample-app-template:core'
+
+  publishedGroupId = 'com.psoffritti.librarysampleapptemplate'
+  libraryName = 'library-sample-app-template'
+  artifact = 'core'
+  packagingType = 'jar'
+
+  libraryDescription = 'Android library to build sample apps for opensource Android libraries in a few simple steps.'
+
+  siteUrl = 'https://github.com/PierfrancescoSoffritti/library-sample-app-template'
+  gitUrl = 'https://github.com/PierfrancescoSoffritti/library-sample-app-template.git'
+
+  libraryVersion = '1.0.0'
+
+  developerId = 'PierfrancescoSoffritti'
+  developerName = 'Pierfrancesco Soffritti'
+  developerEmail = 'soffritti.pierfrancesco@gmail.com'
+
+  licenseName = 'MIT License'
+  licenseUrl = 'https://github.com/PierfrancescoSoffritti/library-sample-app-template/blob/master/LICENSE'
+  allLicenses = ["MIT"]
+}
+
+// Set up the Android Maven publication.
+apply from: rootProject.file('jcenter/maven-install.gradle')
+
+// Publish on Bintray.
+apply from: rootProject.file('jcenter/bintray.gradle')
