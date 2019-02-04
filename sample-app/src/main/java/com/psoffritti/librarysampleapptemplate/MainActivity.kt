@@ -14,10 +14,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val intent = Intent(this, SampleAppTemplateActivity::class.java)
 
-        intent.putExtra(Constants.TITLE.name, "title")
-        intent.putExtra(Constants.HONEPAGE_URL.name, "https://github.com/PierfrancescoSoffritti/sliding-drawer/blob/master/README.md")
-        intent.putExtra(Constants.GITHUB_URL.name, "title")
-        intent.putExtra(Constants.PLAYSTORE_URL.name, "title")
+        intent.putExtra(Constants.TITLE.name, getString(R.string.app_name))
+        intent.putExtra(Constants.HONEPAGE_URL.name, "https://github.com/PierfrancescoSoffritti/library-sample-app-template/blob/master/README.md")
+        intent.putExtra(Constants.GITHUB_URL.name, "https://github.com/PierfrancescoSoffritti/library-sample-app-template")
+        intent.putExtra(Constants.PLAYSTORE_PACKAGE_NAME.name, "title")
 
         val examples = arrayOf(
             ExampleActivityDetails(

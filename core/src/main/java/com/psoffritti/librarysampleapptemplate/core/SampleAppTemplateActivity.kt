@@ -29,33 +29,29 @@ class SampleAppTemplateActivity : AppCompatActivity() {
 
     private var toolbarHeight = 0
 
+    private lateinit var state: State
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sample_app_template)
 
-        val homePageUrl: String? = getHomePageUrl()
-        val navDrawerMenuItems: List<ExampleActivityDetails>? = getNavDrawerItemsFromIntent()
+        state = State.getInstance(intent.extras!!)
 
-        initWebView(homePageUrl)
+        initWebView(state.homepageUrl)
 
         adjustStatusBarTranslucency()
-        initToolbar()
-        initNavDrawer(navDrawerMenuItems)
+        initToolbar(state.title)
+        initNavDrawer(state.examples, state.githubUrl, state.playStorePackageName)
 
         showTutorial()
     }
 
-    private fun getHomePageUrl(): String? {
-        return intent?.extras?.getString(Constants.HONEPAGE_URL.name)
-    }
-
-    private fun getNavDrawerItemsFromIntent(): List<ExampleActivityDetails>? {
-        val items = intent?.extras?.getParcelableArray(Constants.EXAMPLES.name)
-        return items?.filterIsInstance<ExampleActivityDetails>()
-    }
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main_activity_menu, menu)
+
+        if(state.githubUrl == null)
+            menu.removeItem(R.id.open_on_github)
+
         return true
     }
 
@@ -66,12 +62,7 @@ class SampleAppTemplateActivity : AppCompatActivity() {
                 true
             }
             R.id.open_on_github -> {
-                startActivity(
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("https://github.com/PierfrancescoSoffritti/android-youtube-player")
-                    )
-                )
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(state.githubUrl)))
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -118,40 +109,49 @@ class SampleAppTemplateActivity : AppCompatActivity() {
         }
     }
 
-    private fun initToolbar() {
+    private fun initToolbar(appTitle: String?) {
         toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-
         toolbarHeight = toolbar.layoutParams.height
 
+        setSupportActionBar(toolbar)
+
         val actionbar = supportActionBar
+        actionbar?.title = appTitle
         actionbar?.setDisplayHomeAsUpEnabled(true)
         actionbar?.setHomeAsUpIndicator(R.drawable.ic_nav_drawer_menu_24dp)
     }
 
-    private fun initNavDrawer(navDrawerMenuItems: List<ExampleActivityDetails>?) {
+    private fun initNavDrawer(
+        examplesDetails: List<ExampleActivityDetails>?,
+        githubUrl: String?,
+        playStorePackageName: String?
+    ) {
         drawerLayout = findViewById(R.id.drawer_layout)
         val navigationView: NavigationView = findViewById(R.id.navigation_view)
 
         setNavigationViewWidth(navigationView)
 
         val menu = navigationView.menu
-        navDrawerMenuItems?.forEachIndexed { index, element ->
+        examplesDetails?.forEachIndexed { index, element ->
             menu.add(R.id.nav_drawer_examples_group, index, 0, element.nameResource).setIcon(element.iconResource)
         }
+
+        if(githubUrl == null)
+            menu.removeItem(R.id.star_on_github)
+        if(playStorePackageName == null)
+            menu.removeItem(R.id.rate_on_playstore)
 
         navigationView.setNavigationItemSelectedListener { menuItem ->
             drawerLayout.closeDrawers()
 
             val intent = when {
-                navDrawerMenuItems != null && menuItem.itemId >= 0 && menuItem.itemId < navDrawerMenuItems.size -> Intent(this, navDrawerMenuItems[menuItem.itemId].clazz)
-                menuItem.itemId == R.id.star_on_github -> Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/PierfrancescoSoffritti/android-youtube-player/stargazers"))
+                examplesDetails != null && menuItem.itemId >= 0 && menuItem.itemId < examplesDetails.size -> Intent(this, examplesDetails[menuItem.itemId].clazz)
+                menuItem.itemId == R.id.star_on_github -> Intent(Intent.ACTION_VIEW, Uri.parse("$githubUrl/stargazers"))
                 menuItem.itemId == R.id.rate_on_playstore -> {
-                    val appPackageName = packageName
                     try {
-                        Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackageName"))
+                        Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$playStorePackageName"))
                     } catch (exception: ActivityNotFoundException) {
-                        Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName"))
+                        Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$playStorePackageName"))
                     }
                 }
                 else -> return@setNavigationItemSelectedListener false
