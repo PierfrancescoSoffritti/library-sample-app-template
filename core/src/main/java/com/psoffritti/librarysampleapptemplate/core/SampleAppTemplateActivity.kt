@@ -34,6 +34,7 @@ class SampleAppTemplateActivity : AppCompatActivity() {
 
         initToolbar(configuration.title)
         initNavDrawer(configuration.examples, configuration.githubUrl, configuration.playStorePackageName)
+
         if(configuration.homepageUrl != null) initWebView(configuration.homepageUrl) else no_home_page_view.visibility = View.VISIBLE
 
         showTutorial()

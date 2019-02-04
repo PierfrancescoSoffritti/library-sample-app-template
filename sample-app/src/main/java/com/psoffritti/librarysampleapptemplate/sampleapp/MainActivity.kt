@@ -1,4 +1,4 @@
-package com.psoffritti.librarysampleapptemplate
+package com.psoffritti.librarysampleapptemplate.sampleapp
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
         val intent = Intent(this, SampleAppTemplateActivity::class.java)
 
         intent.putExtra(Constants.TITLE.name, getString(R.string.title))
@@ -22,12 +22,12 @@ class MainActivity : AppCompatActivity() {
 
         val examples = arrayOf(
             ExampleActivityDetails(
-                R.string.example_activity_1,
+                R.string.example_activity_1_name,
                 R.drawable.ic_android_24dp,
                 ExampleActivity1::class.java
             ),
             ExampleActivityDetails(
-                R.string.example_activity_2,
+                R.string.example_activity_2_name,
                 R.drawable.ic_insert_emoticon_24dp,
                 ExampleActivity2::class.java
             )

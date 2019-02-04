@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.psoffritti.librarysampleapptemplate">
+    package="com.psoffritti.librarysampleapptemplate.sampleapp">
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ExampleActivity2"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ExampleActivity1" />
-        <activity android:name=".core.SampleAppTemplateActivity" />
+        <activity android:name=".ExampleActivity2" />
+        <activity android:name="com.psoffritti.librarysampleapptemplate.core.SampleAppTemplateActivity" />
     </application>
 
 </manifest>

@@ -32,7 +32,8 @@ internal object Utils {
 
     fun Menu.addItems(examplesDetails: List<ExampleActivityDetails>?) {
         examplesDetails?.forEachIndexed { index, element ->
-            add(R.id.nav_drawer_examples_group, index, 0, element.nameResource).setIcon(element.iconResource)
+            val menuItem = add(R.id.nav_drawer_examples_group, index, 0, element.nameResource)
+            if(element.iconResource != null) menuItem.setIcon(element.iconResource)
         }
     }
 

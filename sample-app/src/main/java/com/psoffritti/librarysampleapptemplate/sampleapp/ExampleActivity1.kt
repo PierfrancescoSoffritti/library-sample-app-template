@@ -1,12 +1,12 @@
-package com.psoffritti.librarysampleapptemplate
+package com.psoffritti.librarysampleapptemplate.sampleapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class ExampleActivity2 : AppCompatActivity() {
+class ExampleActivity1 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_example2)
+        setContentView(R.layout.activity_example1)
     }
 }

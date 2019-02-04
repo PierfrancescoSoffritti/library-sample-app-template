@@ -1,6 +1,7 @@
 package com.psoffritti.librarysampleapptemplate.core.customviews
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.os.Build
 import android.util.AttributeSet
 import android.view.View
@@ -22,6 +23,8 @@ internal class ProgressBarWebView(context: Context, attrs: AttributeSet?, defSty
     var onUrlClick: (String) -> Unit = { throw RuntimeException() }
 
     init {
+        progressbar.visibility = View.GONE
+
         val layoutParams: RelativeLayout.LayoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE)
 
@@ -29,6 +32,11 @@ internal class ProgressBarWebView(context: Context, attrs: AttributeSet?, defSty
         addView(progressbar, layoutParams)
 
         webView.webViewClient = object : WebViewClient() {
+            override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+                super.onPageStarted(view, url, favicon)
+                progressbar.visibility = View.VISIBLE
+            }
+
             override fun onPageCommitVisible(view: WebView, url: String) {
                 super.onPageCommitVisible(view, url)
                 progressbar.visibility = View.GONE
