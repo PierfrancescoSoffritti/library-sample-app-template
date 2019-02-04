@@ -1,20 +1,22 @@
-# library-sample-app-template
-A simple Android library to build sample apps for other Android projects. This library is useful to reduce the boilerplate code needed when writing a sample app for a project.
+[![core](https://api.bintray.com/packages/pierfrancescosoffritti/maven/library-sample-app-template%3Acore/images/download.svg) ](https://bintray.com/pierfrancescosoffritti/maven/library-sample-app-template%3Acore/_latestVersion)
+[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=A%20new%20YouTube%20Player%20library%20for%20Android,%20stable%20and%20customizable&url=https://github.com/PierfrancescoSoffritti/android-youtube-player&via=PierfrancescoSo&hashtags=opensource,youtubeplayer,androiddev)
 
-The library provides a an Activity to use as starting point for the sample app project.
+# library-sample-app-template
+An Android library to bootstrap sample apps for other Android projects. This library is useful to reduce the boilerplate code needed when writing a sample app for a project.
 
 ### Projects using this library for their sample apps:
-* [android-youtube-player:core]()
-* [android-youtube-player:chromecast]()
-* [sliding-panel]()
-* [library-sample-app-template]()
+* [android-youtube-player](https://github.com/PierfrancescoSoffritti/android-youtube-player)
+* [sliding-panel](https://github.com/PierfrancescoSoffritti/sliding-panel)
+* [library-sample-app-template](https://github.com/PierfrancescoSoffritti/library-sample-app-template)
+
+![tutorial](./images/tutorial.jpg) ![mainscreen](./images/main_screen.jpg) ![navdrawer](./images/nav_drawer.jpg)
 
 # Sample app
-You can download the apk for the sample app [at this link](./sample-app/apk), or on the PlayStore.
+You can download the apk for the sample app of this library [at this link](./sample-app/apk), or [on the PlayStore]().
 
 The code of the sample app is available [at this link](./sample-app/).
 
-add playstore badge
+--add playstore badge--
 
 Having the sample apps installed is a good way to be notified of new releases. Although watching this repository will allow GitHub to email you whenever a new release is published.
 
@@ -30,17 +32,21 @@ dependencies {
 ```
 
 # Usage
+This library provides an Activity to be used as starting point for building sample apps.
+
 To use the library you need to launch the library's Activity (`SampleAppTemplateActivity`) from your sample app's main Activity.
 
-`SampleAppTemplateActivity` has a set of optional Views:
-* a `Toolbar` with a title and an icon that, when clicked, sends the user to your GitHub page.
+`SampleAppTemplateActivity` has a set of optional Views ([screenshot1](./images/main_screen.jpg), [screenshot2](./images/nav_drawer.jpg), [screenshot3](./images/tutorial.jpg)):
+* a `Toolbar` with a title and an icon that, when clicked, sends the user to the project's GitHub page.
 * a `NavigationDrawer` that contains: 
   * a set of links to launch other Activities created by the developer. Each Activity is meant to be an example of the project.
   * a link to leave a star on the project's GitHub page.
   * a link to the sample app's page on the PlayStore.
-* a `WebView` that loads the homepage of the project. This could be a custom website or the readme of the project.
+* a `WebView` that loads the homepage of the project. The homepage could be a custom website or the readme of the project.
 
 These optional Views are configured by putting extras into the Intent that launches the Activity.
+
+---
 
 To use `SampleAppTemplateActivity`, first add it to your manifest.
 ```xml
@@ -56,7 +62,7 @@ Make sure that the theme of the `<application>` element in your manifes extends 
 ```
 Every Activity can use the theme you prefer, with or without actionbar. Only the main theme needs to descend from a `NoActionBar` theme.
 
-This is how your manifes should look like.
+Your manifest should look something like this.
 ```xml
 <application
   android:theme="@style/AppTheme">
@@ -98,12 +104,12 @@ override fun onCreate(savedInstanceState: Bundle?) {
   finish()
 }
 ```
-When you run this code, the sample app's main Activity will create this Intent, start `SampleAppTemplateActivity` and then finish.
+When you run this code, the sample app's main Activity will create this Intent, then start `SampleAppTemplateActivity` and then finish itself.
 
 The Intent extras are used to configure the sample app to fit your project. You can [read here what each extra does](#intent-extras).
 
 # Intent extras
-Set these extras to the Intent that launches `SampleAppTemplateActivity` to customize the Activity. Every value is optional.
+Set these extras to the Intent that launches `SampleAppTemplateActivity` to customize the Activity. Every value is optional, if you don't need it just don't set it.
 
 ### Constants.TITLE
 A `String` containing the title of your app.
@@ -117,7 +123,7 @@ intent.putExtra(Constants.TITLE.name, getString(R.string.title))
 **If not set**, the title section of the Toolbar will be empty.
 
 ### Constants.HOMEPAGE_URL
-A `String` containing the URL of your porject's homepage. Could be custom website or your README file.
+A `String` containing the URL of your porject's homepage. Could be a custom website or your README file.
 
 ```kotlin
 intent.putExtra(Constants.HOMEPAGE_URL.name, "https://yourhomepage.com")
@@ -125,7 +131,7 @@ intent.putExtra(Constants.HOMEPAGE_URL.name, "https://yourhomepage.com")
 
 **If set**, the webpage will be loaded in `SampleAppTemplateActivity`'s WebView.
 
-**If not set**, the WebView will be empty and this message will be shown at the center of the screen: `"This library doesn't have a homepage"`.
+**If not set**, the WebView will be empty and the message `"This library doesn't have a homepage"` will be shown at the center of the screen.
 
 ### Constants.GITHUB_URL
 A `String` containing the URL of your porject's GitHub repository.
@@ -155,8 +161,8 @@ intent.putExtra(Constants.PLAYSTORE_PACKAGE_NAME.name, "com.project.sampleapp")
 An `Array` of `ExampleActivityDetails`. You need to use this extra to specify the Activities the showcase examples of your projects.
 
 `ExampleActivityDetails` takes three arguments:
-* the resource id of the String you want to use as the name of the Activity. It will be displayed in the NavigationDrawer.
-* the resource id of the Drawable you want to use as icon for this Activity. It will be displayed in the NavigationDrawer. The icon is optional, you can pass null.
+* the resource id of the String you want to use as the name of the Activity. It will be shown in the NavigationDrawer.
+* the resource id of the Drawable you want to use as icon for this Activity. It will be shown in the NavigationDrawer. The icon is optional, you can pass null.
 * the class Object of the Activity. It will be used to launch the Activity when the item in the NavigationDrawer is clicked.
 
 ```kotlin
@@ -178,7 +184,7 @@ intent.putExtra(Constants.EXAMPLES.name, examples)
 
 **If set**, a list of links to launch each Activity will be shown in the NavigationDrawer.
 
-**If not set**, the links won't be shown in the NavigationDrawer. It doesn't make much sense to not set this extra, your sample app will be just a webpage for your project.
+**If not set**, the links won't be shown in the NavigationDrawer.
 
 # Appearance
 `SampleAppTemplateActivity` will inherit colors and styles from your application. Change them in the same way you would for you application, by using `colorPrimary`, `colorPrimaryDark` and `accentColor`.
@@ -189,3 +195,7 @@ If you want to customize the color of the [tutorial widget](./images/tutorial.jp
 <color name="tutorial_target_circle_color">#somecolor</color>
 <color name="tutorial_text_color">#somecolor</color>
 ```
+
+---
+
+For any question feel free to [open an issue on the GitHub repository](https://github.com/PierfrancescoSoffritti/library-sample-app-template/issues).
