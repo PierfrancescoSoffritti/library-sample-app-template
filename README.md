@@ -9,7 +9,7 @@ An Android library to bootstrap sample apps for other Android projects. This lib
 * [sliding-panel](https://github.com/PierfrancescoSoffritti/sliding-panel)
 * [library-sample-app-template](https://github.com/PierfrancescoSoffritti/library-sample-app-template)
 
-![tutorial](./images/merged.jpg)
+![showcase](./images/merged.jpg)
 
 # Sample app
 You can download the apk for the sample app of this library [at this link](./sample-app/apk), or [on the PlayStore]().
