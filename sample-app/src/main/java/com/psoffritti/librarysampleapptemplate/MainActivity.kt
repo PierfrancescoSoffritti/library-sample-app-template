@@ -1,11 +1,12 @@
 package com.psoffritti.librarysampleapptemplate
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.psoffritti.librarysampleapptemplate.core.SampleAppTemplateActivity
 import com.psoffritti.librarysampleapptemplate.core.utils.Constants
 import com.psoffritti.librarysampleapptemplate.core.utils.ExampleActivityDetails
-import com.psoffritti.librarysampleapptemplate.core.SampleAppTemplateActivity
+
 
 class MainActivity : AppCompatActivity() {
 

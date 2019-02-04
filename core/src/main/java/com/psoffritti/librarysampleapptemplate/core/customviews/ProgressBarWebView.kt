@@ -1,4 +1,4 @@
-package com.psoffritti.librarysampleapptemplate.core.customViews
+package com.psoffritti.librarysampleapptemplate.core.customviews
 
 import android.content.Context
 import android.os.Build
@@ -12,7 +12,7 @@ import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import java.lang.RuntimeException
 
-class ProgressBarWebView(context: Context, attrs: AttributeSet?, defStyleAttr: Int): RelativeLayout(context, attrs, defStyleAttr) {
+internal class ProgressBarWebView(context: Context, attrs: AttributeSet?, defStyleAttr: Int): RelativeLayout(context, attrs, defStyleAttr) {
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
 

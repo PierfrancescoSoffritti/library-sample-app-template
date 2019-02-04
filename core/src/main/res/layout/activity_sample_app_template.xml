@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:targetApi="lollipop" />
 
-        <com.psoffritti.librarysampleapptemplate.core.customViews.ProgressBarWebView
+        <com.psoffritti.librarysampleapptemplate.core.customviews.ProgressBarWebView
             android:id="@+id/webview"
             android:layout_width="0dp"
             android:layout_height="0dp"

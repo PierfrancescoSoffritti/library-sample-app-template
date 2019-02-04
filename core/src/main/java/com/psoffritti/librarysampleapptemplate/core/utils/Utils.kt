@@ -10,7 +10,7 @@ import android.view.WindowManager
 import com.google.android.material.navigation.NavigationView
 import com.psoffritti.librarysampleapptemplate.core.R
 
-object Utils {
+internal object Utils {
     fun Activity.setStatusBarTranslucency() {
         if (Build.VERSION.SDK_INT >= 21) {
             val windowParams: WindowManager.LayoutParams = window.attributes
