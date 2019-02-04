@@ -23,12 +23,12 @@ class MainActivity : AppCompatActivity() {
             ExampleActivityDetails(
                 R.string.example_activity_1,
                 R.drawable.ic_android_24dp,
-                Example1Activity::class.java
+                ExampleActivity1::class.java
             ),
             ExampleActivityDetails(
                 R.string.example_activity_2,
                 R.drawable.ic_insert_emoticon_24dp,
-                Example1Activity::class.java
+                ExampleActivity2::class.java
             )
         )
 
