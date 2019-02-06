@@ -1,5 +1,4 @@
 <resources>
-    <string name="lsat_app_name">library-sample-app-template</string>
     <string name="lsat_star_on_github">Star on GitHub</string>
     <string name="lsat_rate_on_playstore">Rate on PlayStore</string>
     <string name="lsat_open_on_github">Open on GitHub</string>
