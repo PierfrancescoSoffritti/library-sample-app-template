@@ -1,3 +1,5 @@
 <resources>
-	<public />
+    <attr format="color" name="lsat_tutorial_background_color" />
+    <attr format="color" name="lsat_tutorial_target_circle_color" />
+    <attr format="color" name="lsat_tutorial_text_color" />
 </resources>

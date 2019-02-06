@@ -18,6 +18,7 @@ import com.psoffritti.librarysampleapptemplate.core.utils.Utils.getScreenWidth
 import com.psoffritti.librarysampleapptemplate.core.utils.Utils.openUri
 import com.psoffritti.librarysampleapptemplate.core.utils.Utils.setStatusBarTranslucency
 import com.psoffritti.librarysampleapptemplate.core.utils.Utils.setWidth
+import com.psoffritti.librarysampleapptemplate.core.utils.Utils.resolveColorAttribute
 import kotlinx.android.synthetic.main.lsat_activity_sample_app_template.*
 
 /**
@@ -135,10 +136,10 @@ class SampleAppTemplateActivity : AppCompatActivity() {
                 getString(R.string.lsat_tutorial_title),
                 getString(R.string.lsat_tutorial_description)
             )
-                .outerCircleColor(R.color.tutorial_background_color)
+                .outerCircleColorInt(resolveColorAttribute(R.attr.lsat_tutorial_background_color, R.color.lsat_tutorial_background_color))
                 .outerCircleAlpha(1f)
-                .targetCircleColor(R.color.tutorial_target_circle_color)
-                .titleTextColor(R.color.tutorial_text_color)
+                .targetCircleColorInt(resolveColorAttribute(R.attr.lsat_tutorial_target_circle_color, R.color.lsat_tutorial_target_circle_color))
+                .titleTextColorInt(resolveColorAttribute(R.attr.lsat_tutorial_text_color, R.color.lsat_tutorial_text_color))
                 .drawShadow(true)
                 .transparentTarget(true), object : TapTargetView.Listener() {
                 override fun onTargetClick(view: TapTargetView) {

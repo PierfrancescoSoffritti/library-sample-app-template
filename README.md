@@ -191,13 +191,27 @@ intent.putExtra(Constants.EXAMPLES.name, examples)
 **If not set**, the links won't be shown in the NavigationDrawer.
 
 # Appearance
-`SampleAppTemplateActivity` will inherit colors and styles from your application. Change them in the same way you would for you application, by using `colorPrimary`, `colorPrimaryDark` and `accentColor`.
+`SampleAppTemplateActivity` will inherit colors and styles from your application's theme. Change them in the same way you would for you application, by using `colorPrimary`, `colorPrimaryDark` and `accentColor`.
 
-If you want to customize the color of the [tutorial widget](./images/tutorial.jpg), define this colors in your app.
+If you want to customize the color of the [tutorial widget](./images/tutorial.jpg), define this attributes in your app's theme: 
+- `lsat_tutorial_background_color`: changes the color of the bigger background circle.
+- `lsat_tutorial_target_circle_color`: changes the color of the smaller intermittent cricle.
+- `lsat_tutorial_text_color`: changes the color of the text.
+
+
+In the end your app's theme should look something like this.
 ```xml
-<color name="tutorial_background_color">#somecolor</color>
-<color name="tutorial_target_circle_color">#somecolor</color>
-<color name="tutorial_text_color">#somecolor</color>
+<resources>
+  <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+
+    <item name="lsat_tutorial_background_color">@color/tutorial_background_color</item>
+    <item name="lsat_tutorial_target_circle_color">@color/tutorial_target_circle_color</item>
+    <item name="lsat_tutorial_text_color">@color/tutorial_text_color</item>
+  </style>
+</resources>
 ```
 
 ---

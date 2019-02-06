@@ -7,6 +7,10 @@ import android.net.Uri
 import android.os.Build
 import android.view.Menu
 import android.view.WindowManager
+import androidx.annotation.AttrRes
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
+import androidx.core.content.ContextCompat
 import com.google.android.material.navigation.NavigationView
 import com.psoffritti.librarysampleapptemplate.core.R
 
@@ -19,7 +23,7 @@ internal object Utils {
         }
     }
 
-    fun Activity.getScreenWidth() : Int {
+    fun Activity.getScreenWidth(): Int {
         val display = windowManager.defaultDisplay
         val size = Point()
         display.getSize(size)
@@ -42,5 +46,11 @@ internal object Utils {
         val dim320dp = resources.getDimensionPixelSize(R.dimen.lsat_320dp)
         params.width = if (width > dim320dp) dim320dp else width
         layoutParams = params
+    }
+
+    @ColorInt
+    fun Activity.resolveColorAttribute(@AttrRes attr: Int, @ColorRes defValue: Int): Int {
+        val typedArray = theme.obtainStyledAttributes(intArrayOf(attr))
+        return typedArray.getColor(0, ContextCompat.getColor(this, defValue))
     }
 }

@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFF</color>
-    <color name="colorPrimaryDark">#000</color>
-    <color name="colorAccent">#FF4081</color>
-
     <color name="lsat_github_black">#24292E</color>
 
-    <color name="tutorial_background_color">#24292E</color>
-    <color name="tutorial_target_circle_color">#FFFFFF</color>
-    <color name="tutorial_text_color">#FFFFFF</color>
+    <color name="lsat_tutorial_background_color">#24292E</color>
+    <color name="lsat_tutorial_target_circle_color">#FFFFFF</color>
+    <color name="lsat_tutorial_text_color">#FFFFFF</color>
 </resources>

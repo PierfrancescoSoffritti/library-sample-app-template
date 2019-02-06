@@ -1,9 +1,11 @@
 <resources>
-
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
 
+        <item name="lsat_tutorial_background_color">@color/tutorial_background_color</item>
+        <item name="lsat_tutorial_target_circle_color">@color/tutorial_target_circle_color</item>
+        <item name="lsat_tutorial_text_color">@color/tutorial_text_color</item>
+    </style>
 </resources>
