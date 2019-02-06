@@ -1,7 +1,8 @@
-package com.psoffritti.librarysampleapptemplate.sampleapp
+package com.psoffritti.librarysampleapptemplate.sampleapp.examples
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.psoffritti.librarysampleapptemplate.sampleapp.R
 
 class ExampleActivity2 : AppCompatActivity() {
 

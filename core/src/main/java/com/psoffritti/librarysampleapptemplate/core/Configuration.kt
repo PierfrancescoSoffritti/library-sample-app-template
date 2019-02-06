@@ -1,7 +1,6 @@
 package com.psoffritti.librarysampleapptemplate.core
 
 import android.os.Bundle
-import com.psoffritti.librarysampleapptemplate.core.utils.Constants
 import com.psoffritti.librarysampleapptemplate.core.utils.ExampleActivityDetails
 
 internal class Configuration private constructor(val title: String?, val homepageUrl: String?, val githubUrl: String?, val playStorePackageName: String?, val examples: List<ExampleActivityDetails>?) {

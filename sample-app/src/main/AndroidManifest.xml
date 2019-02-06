@@ -16,8 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ExampleActivity1" />
-        <activity android:name=".ExampleActivity2" android:theme="@style/Base.Theme.MaterialComponents.Light.DarkActionBar"/>
+        <activity android:name=".examples.ExampleActivity1" />
+        <activity android:name=".examples.ExampleActivity2" android:theme="@style/Base.Theme.MaterialComponents.Light.DarkActionBar"/>
         <activity android:name="com.psoffritti.librarysampleapptemplate.core.SampleAppTemplateActivity" />
     </application>
 

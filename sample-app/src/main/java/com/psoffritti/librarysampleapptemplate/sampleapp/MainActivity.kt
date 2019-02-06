@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.psoffritti.librarysampleapptemplate.core.SampleAppTemplateActivity
-import com.psoffritti.librarysampleapptemplate.core.utils.Constants
+import com.psoffritti.librarysampleapptemplate.core.Constants
 import com.psoffritti.librarysampleapptemplate.core.utils.ExampleActivityDetails
+import com.psoffritti.librarysampleapptemplate.sampleapp.examples.ExampleActivity1
+import com.psoffritti.librarysampleapptemplate.sampleapp.examples.ExampleActivity2
 
 
 class MainActivity : AppCompatActivity() {
