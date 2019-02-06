@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.getkeepsafe.taptargetview.TapTarget
 import com.getkeepsafe.taptargetview.TapTargetView
+import com.psoffritti.librarysampleapptemplate.core.utils.Configuration
 import com.psoffritti.librarysampleapptemplate.core.utils.ExampleActivityDetails
 import com.psoffritti.librarysampleapptemplate.core.utils.Utils.addItems
 import com.psoffritti.librarysampleapptemplate.core.utils.Utils.getScreenWidth
@@ -19,7 +20,11 @@ import com.psoffritti.librarysampleapptemplate.core.utils.Utils.setStatusBarTran
 import com.psoffritti.librarysampleapptemplate.core.utils.Utils.setWidth
 import kotlinx.android.synthetic.main.lsat_activity_sample_app_template.*
 
-
+/**
+ * This Activity is meant to be used as a template for sample applications.
+ *
+ * You can configure many properties by passing extras to the Activity Intent. To learn more [read the documentation](https://github.com/PierfrancescoSoffritti/library-sample-app-template).
+ */
 class SampleAppTemplateActivity : AppCompatActivity() {
 
     private lateinit var configuration: Configuration

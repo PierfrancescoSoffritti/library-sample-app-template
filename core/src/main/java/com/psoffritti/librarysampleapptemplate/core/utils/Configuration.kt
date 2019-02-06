@@ -1,13 +1,25 @@
-package com.psoffritti.librarysampleapptemplate.core
+package com.psoffritti.librarysampleapptemplate.core.utils
 
 import android.os.Bundle
-import com.psoffritti.librarysampleapptemplate.core.utils.ExampleActivityDetails
+import com.psoffritti.librarysampleapptemplate.core.Constants
 
 internal class Configuration private constructor(val title: String?, val homepageUrl: String?, val githubUrl: String?, val playStorePackageName: String?, val examples: List<ExampleActivityDetails>?) {
 
     companion object {
         fun getInstance(bundle: Bundle): Configuration {
-            return Configuration(getAppTitle(bundle), getHomePageUrl(bundle), getGitHubUrl(bundle), getPlayStorePackageName(bundle), getExamplesActivityDetails(bundle))
+            return Configuration(
+                getAppTitle(
+                    bundle
+                ),
+                getHomePageUrl(bundle),
+                getGitHubUrl(bundle),
+                getPlayStorePackageName(
+                    bundle
+                ),
+                getExamplesActivityDetails(
+                    bundle
+                )
+            )
         }
 
         private fun getPlayStorePackageName(bundle: Bundle): String? {
