@@ -17,7 +17,7 @@ import com.psoffritti.librarysampleapptemplate.core.utils.Utils.getScreenWidth
 import com.psoffritti.librarysampleapptemplate.core.utils.Utils.openUri
 import com.psoffritti.librarysampleapptemplate.core.utils.Utils.setStatusBarTranslucency
 import com.psoffritti.librarysampleapptemplate.core.utils.Utils.setWidth
-import kotlinx.android.synthetic.main.activity_sample_app_template.*
+import kotlinx.android.synthetic.main.lsat_activity_sample_app_template.*
 
 
 class SampleAppTemplateActivity : AppCompatActivity() {
@@ -26,7 +26,7 @@ class SampleAppTemplateActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sample_app_template)
+        setContentView(R.layout.lsat_activity_sample_app_template)
 
         configuration = Configuration.getInstance(intent.extras ?: Bundle())
 
@@ -41,7 +41,7 @@ class SampleAppTemplateActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main_activity_menu, menu)
+        menuInflater.inflate(R.menu.lsat_main_activity_menu, menu)
         if(configuration.githubUrl == null)
             menu.removeItem(R.id.open_on_github)
         return true
@@ -68,7 +68,7 @@ class SampleAppTemplateActivity : AppCompatActivity() {
         val actionbar = supportActionBar
         actionbar?.title = appTitle
         actionbar?.setDisplayHomeAsUpEnabled(true)
-        actionbar?.setHomeAsUpIndicator(R.drawable.ic_nav_drawer_menu_24dp)
+        actionbar?.setHomeAsUpIndicator(R.drawable.lsat_ic_nav_drawer_menu_24dp)
     }
 
     private fun initNavDrawer(
@@ -127,8 +127,8 @@ class SampleAppTemplateActivity : AppCompatActivity() {
             this,
             TapTarget.forView(
                 target,
-                getString(R.string.tutorial_title),
-                getString(R.string.tutorial_description)
+                getString(R.string.lsat_tutorial_title),
+                getString(R.string.lsat_tutorial_description)
             )
                 .outerCircleColor(R.color.tutorial_background_color)
                 .outerCircleAlpha(1f)

@@ -38,7 +38,7 @@
             android:id="@+id/no_home_page_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/no_home_page"
+            android:text="@string/lsat_no_home_page"
             android:visibility="gone"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -53,6 +53,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:menu="@menu/drawer_menu" />
+        app:menu="@menu/lsat_drawer_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

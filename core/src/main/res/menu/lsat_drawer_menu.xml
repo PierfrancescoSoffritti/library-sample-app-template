@@ -13,14 +13,14 @@
             android:checkable="false"
             android:orderInCategory="1"
             android:id="@+id/star_on_github"
-            android:title="@string/star_on_github"
-            android:icon="@drawable/ic_github_24dp" />
+            android:title="@string/lsat_star_on_github"
+            android:icon="@drawable/lsat_ic_github_24dp" />
 
         <item
             android:checkable="false"
             android:orderInCategory="1"
             android:id="@+id/rate_on_playstore"
-            android:title="@string/rate_on_playstore"
-            android:icon="@drawable/ic_playstore_24dp" />
+            android:title="@string/lsat_rate_on_playstore"
+            android:icon="@drawable/lsat_ic_playstore_24dp" />
     </group>
 </menu>

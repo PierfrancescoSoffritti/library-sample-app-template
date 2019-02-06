@@ -39,7 +39,7 @@ internal object Utils {
 
     fun NavigationView.setWidth(width: Int) {
         val params = layoutParams
-        val dim320dp = resources.getDimensionPixelSize(R.dimen._320dp)
+        val dim320dp = resources.getDimensionPixelSize(R.dimen.lsat_320dp)
         params.width = if (width > dim320dp) dim320dp else width
         layoutParams = params
     }

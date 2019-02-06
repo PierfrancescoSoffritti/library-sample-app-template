@@ -8,8 +8,8 @@
 
         <item
             android:id="@+id/open_on_github"
-            android:title="@string/open_on_github"
-            android:icon="@drawable/ic_github_24dp"
+            android:title="@string/lsat_open_on_github"
+            android:icon="@drawable/lsat_ic_github_24dp"
             app:showAsAction="always" />
 
     </group>
