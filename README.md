@@ -1,7 +1,7 @@
 # library-sample-app-template
 
 [![core](https://api.bintray.com/packages/pierfrancescosoffritti/maven/library-sample-app-template%3Acore/images/download.svg) ](https://bintray.com/pierfrancescosoffritti/maven/library-sample-app-template%3Acore/_latestVersion)
-[![](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=A%20new%20YouTube%20Player%20library%20for%20Android,%20stable%20and%20customizable&url=https://github.com/PierfrancescoSoffritti/android-youtube-player&via=PierfrancescoSo&hashtags=opensource,youtubeplayer,androiddev)
+[![share on twitter](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=An%20easier%20way%20to%20build%20sample%20apps%20for%20Android%20libraries:&url=https://github.com/PierfrancescoSoffritti/library-sample-app-template&via=PierfrancescoSo&hashtags=opensource,sampleapps,androiddev)
 
 An Android library to bootstrap sample apps for other Android projects. This library is useful to reduce the boilerplate code needed when writing a sample app for a project.
 
@@ -15,12 +15,12 @@ An Android library to bootstrap sample apps for other Android projects. This lib
 # Sample app
 You can download the apk for the sample app of this library [at this link](./sample-app/apk), or [on the PlayStore](https://play.google.com/store/apps/details?id=com.psoffritti.librarysampleapptemplate.sampleapp).
 
-The code of the sample app is available [at this link](./sample-app/).
-
 <a href='https://play.google.com/store/apps/details?id=com.psoffritti.librarysampleapptemplate.sampleapp&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
     <img width='200px' alt='Get it on Google Play'
          src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/>
 </a>
+
+The code of the sample app is available [at this link](./sample-app/).
 
 Having the sample apps installed is a good way to be notified of new releases. Although watching this repository will allow GitHub to email you whenever a new release is published.
 
