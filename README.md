@@ -31,7 +31,7 @@ The minimum API level supported by this library is API 15.
 
 ```
 dependencies {
-  implementation 'com.psoffritti.librarysampleapptemplate:core:1.0.0'
+  implementation 'com.psoffritti.librarysampleapptemplate:core:1.0.1'
 }
 ```
 
