@@ -7,19 +7,23 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.getkeepsafe.taptargetview.TapTarget
 import com.getkeepsafe.taptargetview.TapTargetView
+import com.google.android.material.navigation.NavigationView
+import com.psoffritti.librarysampleapptemplate.core.customviews.ProgressBarWebView
 import com.psoffritti.librarysampleapptemplate.core.utils.Configuration
 import com.psoffritti.librarysampleapptemplate.core.utils.ExampleActivityDetails
 import com.psoffritti.librarysampleapptemplate.core.utils.Utils.addItems
 import com.psoffritti.librarysampleapptemplate.core.utils.Utils.getScreenWidth
 import com.psoffritti.librarysampleapptemplate.core.utils.Utils.openUri
+import com.psoffritti.librarysampleapptemplate.core.utils.Utils.resolveColorAttribute
 import com.psoffritti.librarysampleapptemplate.core.utils.Utils.setStatusBarTranslucency
 import com.psoffritti.librarysampleapptemplate.core.utils.Utils.setWidth
-import com.psoffritti.librarysampleapptemplate.core.utils.Utils.resolveColorAttribute
-import kotlinx.android.synthetic.main.lsat_activity_sample_app_template.*
 
 /**
  * This Activity is meant to be used as a template for sample applications.
@@ -30,9 +34,21 @@ class SampleAppTemplateActivity : AppCompatActivity() {
 
     private lateinit var configuration: Configuration
 
+    private lateinit var no_home_page_view: View
+    private lateinit var drawer_layout: DrawerLayout
+    private lateinit var toolbar: Toolbar
+    private lateinit var navigation_view: NavigationView
+    private lateinit var webview: ProgressBarWebView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.lsat_activity_sample_app_template)
+
+        no_home_page_view = findViewById(R.id.no_home_page_view)
+        drawer_layout = findViewById(R.id.drawer_layout)
+        toolbar = findViewById(R.id.toolbar)
+        navigation_view = findViewById(R.id.navigation_view)
+        webview = findViewById(R.id.webview)
 
         configuration = Configuration.getInstance(intent.extras ?: Bundle())
 
@@ -41,7 +57,7 @@ class SampleAppTemplateActivity : AppCompatActivity() {
         initToolbar(configuration.title)
         initNavDrawer(configuration.examples, configuration.githubUrl, configuration.playStorePackageName)
 
-        if(configuration.homepageUrl != null) initWebView(configuration.homepageUrl) else no_home_page_view.visibility = View.VISIBLE
+        if(configuration.homepageUrl != null) initWebView(configuration.homepageUrl!!) else no_home_page_view.visibility = View.VISIBLE
 
         showTutorial()
     }
@@ -110,7 +126,7 @@ class SampleAppTemplateActivity : AppCompatActivity() {
         }
     }
 
-    private fun initWebView(homePageUrl: String?) {
+    private fun initWebView(homePageUrl: String) {
         webview.enableJavascript(true)
         webview.loadUrl(homePageUrl)
         webview.onUrlClick = { openUri(it) }

@@ -1,14 +1,11 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply from: '../dependencies.gradle'
 
 ext.shard = 'core'
-apply from: '../bintrayconfig.gradle'
 
 android {
     compileSdkVersion versions.compileSdk
-    buildToolsVersion versions.buildTools
 
     defaultConfig {
         minSdkVersion versions.minSdk
@@ -30,10 +27,9 @@ dependencies {
     androidTestImplementation "androidx.test:runner:$versions.runner"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espressoCore"
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
     implementation "androidx.appcompat:appcompat:$versions.androidxCore"
     implementation "androidx.constraintlayout:constraintlayout:$versions.androidxConstraintLayout"
     implementation "com.google.android.material:material:$versions.androidxMaterial"
 
-    api 'com.getkeepsafe.taptargetview:taptargetview:1.12.0'
+    api 'com.getkeepsafe.taptargetview:taptargetview:1.13.3'
 }

@@ -4,20 +4,18 @@ buildscript {
     apply from: './dependencies.gradle'
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:${versions.gradlePlugin}"
+        classpath "com.android.tools.build:gradle:$versions.gradlePlugin"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
-
-        classpath "com.novoda:bintray-release:$versions.bintrayPlugin"
     }
 }
 
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 
     tasks.withType(Javadoc).all {
