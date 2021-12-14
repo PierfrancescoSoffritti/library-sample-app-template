@@ -1,8 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'maven-publish'
 apply from: '../dependencies.gradle'
-
-ext.shard = 'core'
 
 android {
     compileSdkVersion versions.compileSdk
@@ -32,4 +31,17 @@ dependencies {
     implementation "com.google.android.material:material:$versions.androidxMaterial"
 
     api 'com.getkeepsafe.taptargetview:taptargetview:1.13.3'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.psoffritti.librarysampleapptemplate'
+                artifactId = 'core'
+                version = versions.publishVersion
+            }
+        }
+    }
 }
