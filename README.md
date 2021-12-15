@@ -24,7 +24,7 @@ The code of the sample app is available [at this link](./sample-app/).
 Having the sample apps installed is a good way to be notified of new releases. Although watching this repository will allow GitHub to email you whenever a new release is published.
 
 # Download
-The Gradle dependency is available via [JitPak](https://jitpack.io/#PierfrancescoSoffritti/library-sample-app-template).
+The Gradle dependency is available via [JitPack](https://jitpack.io/#PierfrancescoSoffritti/library-sample-app-template).
 
 The minimum API level supported by this library is API 15.
 
