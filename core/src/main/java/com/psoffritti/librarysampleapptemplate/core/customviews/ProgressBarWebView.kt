@@ -83,6 +83,13 @@ internal class ProgressBarWebView(context: Context, attrs: AttributeSet?, defSty
         }
     }
 
+    /***
+     * getwebview
+     */
+    fun getWebview():WebView?{
+        return webView
+    }
+
     fun loadUrl(url: String) {
         webView?.loadUrl(url)
     }
