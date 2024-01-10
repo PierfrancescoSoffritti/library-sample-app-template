@@ -11,6 +11,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
+import com.psoffritti.librarysampleapptemplate.core.ProgressBarWebviewConstant
 import java.lang.RuntimeException
 
 internal class ProgressBarWebView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
@@ -24,22 +25,24 @@ internal class ProgressBarWebView(context: Context, attrs: AttributeSet?, defSty
     var onUrlClick: (String) -> Unit = { throw RuntimeException() }
 
     init {
-        if (webView == null) {
-           try{
-               //webview may disable or webview not instant
-               webView = WebView(context)
-           }catch (e:Exception){
-               e.printStackTrace()
-           }
+        if ((!ProgressBarWebviewConstant.isWebviewHaveException) || ProgressBarWebviewConstant.isWebviewHaveExceptionLoadToTry) {
+            webView = try {
+                WebView(context)
+            } catch (e: Exception) {
+                null
+            }
+        } else {
+            webView = null
         }
+        ProgressBarWebviewConstant.isWebviewHaveException = webView == null
+
         progressbar.visibility = View.GONE
 
         val layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
         layoutParams.addRule(CENTER_IN_PARENT, TRUE)
-
-        if (webView != null) {
+        webView?.let {
             addView(
-                webView,
+                it,
                 LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT
@@ -86,7 +89,7 @@ internal class ProgressBarWebView(context: Context, attrs: AttributeSet?, defSty
     /***
      * getwebview
      */
-    fun getWebview():WebView?{
+    fun getWebview(): WebView? {
         return webView
     }
 
