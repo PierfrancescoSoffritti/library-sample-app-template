@@ -11,27 +11,47 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
+import com.psoffritti.librarysampleapptemplate.core.ProgressBarWebviewConstant
 import java.lang.RuntimeException
 
-internal class ProgressBarWebView(context: Context, attrs: AttributeSet?, defStyleAttr: Int): RelativeLayout(context, attrs, defStyleAttr) {
+internal class ProgressBarWebView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
+    RelativeLayout(context, attrs, defStyleAttr) {
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
 
-    private val webView = WebView(context)
+    private var webView: WebView? = null
     private val progressbar = ProgressBar(context, attrs, android.R.attr.progressBarStyle)
 
     var onUrlClick: (String) -> Unit = { throw RuntimeException() }
 
     init {
+        if ((!ProgressBarWebviewConstant.isWebviewHaveException) || ProgressBarWebviewConstant.isWebviewHaveExceptionLoadToTry) {
+            webView = try {
+                WebView(context)
+            } catch (e: Exception) {
+                null
+            }
+        } else {
+            webView = null
+        }
+        ProgressBarWebviewConstant.isWebviewHaveException = webView == null
+
         progressbar.visibility = View.GONE
 
         val layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
         layoutParams.addRule(CENTER_IN_PARENT, TRUE)
-
-        addView(webView, LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
+        webView?.let {
+            addView(
+                it,
+                LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                )
+            )
+        }
         addView(progressbar, layoutParams)
 
-        webView.webViewClient = object : WebViewClient() {
+        webView?.webViewClient = object : WebViewClient() {
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 super.onPageStarted(view, url, favicon)
                 progressbar.visibility = View.VISIBLE
@@ -46,7 +66,10 @@ internal class ProgressBarWebView(context: Context, attrs: AttributeSet?, defSty
                 return handleUrl(url)
             }
 
-            override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
+            override fun shouldOverrideUrlLoading(
+                view: WebView,
+                request: WebResourceRequest
+            ): Boolean {
                 return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                     handleUrl(request.url.toString())
                 else
@@ -63,11 +86,18 @@ internal class ProgressBarWebView(context: Context, attrs: AttributeSet?, defSty
         }
     }
 
+    /***
+     * getwebview
+     */
+    fun getWebview(): WebView? {
+        return webView
+    }
+
     fun loadUrl(url: String) {
-        webView.loadUrl(url)
+        webView?.loadUrl(url)
     }
 
     fun enableJavascript(enable: Boolean) {
-        webView.settings.javaScriptEnabled = enable
+        webView?.settings?.javaScriptEnabled = enable
     }
 }
