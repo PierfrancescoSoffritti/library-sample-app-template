@@ -4,6 +4,7 @@ apply plugin: 'maven-publish'
 apply from: '../dependencies.gradle'
 
 android {
+    namespace 'com.psoffritti.librarysampleapptemplate.core'
     compileSdkVersion versions.compileSdk
 
     defaultConfig {
@@ -19,6 +20,14 @@ android {
             'src/main/res-public'
         ]
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
@@ -30,7 +39,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$versions.androidxConstraintLayout"
     implementation "com.google.android.material:material:$versions.androidxMaterial"
 
-    api 'com.getkeepsafe.taptargetview:taptargetview:1.13.3'
+    implementation 'com.getkeepsafe.taptargetview:taptargetview:1.15.0'
 }
 
 afterEvaluate {

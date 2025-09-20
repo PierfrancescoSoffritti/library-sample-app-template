@@ -2,11 +2,11 @@ ext.versions = [
         // Project
     minSdk                      : 15,
     compileSdk                  : 31,
-    publishVersion              : '1.0.3',
-    publishVersionCode          : 4,
+    publishVersion              : '1.0.4',
+    publishVersionCode          : 5,
 
         // Plugins
-    gradlePlugin                : '7.0.4',
+    gradlePlugin                : '8.10.1',
 
         // AndroidX
     androidxCore                : '1.4.0',
@@ -14,7 +14,7 @@ ext.versions = [
     androidxConstraintLayout    : '2.1.2',
 
         // Kotlin
-    kotlin                      : '1.6.0',
+    kotlin                      : '2.1.0',
 
         // Tests
     junit                       : '4.13.2',
